@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>demo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.antlr</groupId>
+            <artifactId>antlr4</artifactId>
+            <version>4.10</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.bytedeco.javacpp-presets</groupId>
+            <artifactId>llvm-platform</artifactId>
+            <version>7.0.0-1.4.3</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.antlr</groupId>
+                <artifactId>antlr4-maven-plugin</artifactId>
+                <version>4.7</version>
+                <executions>
+                    <execution>
+                        <id>antlr</id>
+                        <goals>
+                            <goal>antlr4</goal>
+                        </goals>
+                        <phase>compile</phase>
+                    </execution>
+                </executions>
+
+                <configuration>
+                    <!--指定导入语法和标记文件的位置。-->
+                    <libDirectory>src/main/antlr4/imports</libDirectory>
+                    <!--ANTLR语法文件(*.g4)所在的目录。-->
+                    <sourceDirectory>src/main/antlr4</sourceDirectory>
+                    <!--指定生成Java文件的输出目录。-->
+                    <outputDirectory>src/main/java</outputDirectory>
+                    <!--生成解析树侦听器接口和基类。-->
+                    <listener>true</listener>
+                    <!--生成解析树访问者接口和基类。-->
+                    <visitor>true</visitor>
+                    <treatWarningsAsErrors>true</treatWarningsAsErrors>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
