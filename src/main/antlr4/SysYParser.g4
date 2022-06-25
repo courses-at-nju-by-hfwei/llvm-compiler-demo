@@ -85,31 +85,11 @@ stmt
    ;
 
 exp
-   : L_PAREN exp R_PAREN
-   | lVal
-   | number
-   | IDENT L_PAREN funcRParams? R_PAREN
-   | unaryOp exp
-   | exp (MUL | DIV | MOD) exp
-   | exp (PLUS | MINUS) exp
+   : addExp
    ;
 
-
-//exp
-//   : (L_PAREN exp R_PAREN | lVal | number | IDENT L_PAREN funcRParams? R_PAREN | unaryOp exp) exp1
-//   ;
-//
-//exp1
-//   : (MUL | DIV | MOD) exp
-//   | (PLUS | MINUS) exp
-//   |
-//   ;
-
 cond
-   : exp ((LT | GT | LE | GE) cond)*
-   | cond (EQ | NEQ) cond
-   | cond AND cond
-   | cond OR cond
+   : lOrExp
    ;
 
 lVal
@@ -124,6 +104,12 @@ primaryExp
 
 number
    : INTEGR_CONST
+   ;
+
+unaryExp
+   : primaryExp
+   | IDENT L_PAREN funcRParams? R_PAREN
+   | unaryOp unaryExp
    ;
 
 unaryOp
@@ -141,6 +127,30 @@ param
    | STRING
    ;
 
+mulExp
+   : unaryExp ((MUL | DIV | MOD) unaryExp)*
+   ;
+
+addExp
+   : mulExp ((PLUS | MINUS) mulExp)*
+   ;
+
+relExp
+   : addExp ((LT | GT | LE | GE) addExp)*
+   ;
+
+eqExp
+   : relExp ((EQ | NEQ) relExp)*
+   ;
+
+lAndExp
+   : eqExp (AND eqExp)*
+   ;
+
+lOrExp
+   : lAndExp (OR lAndExp)*
+   ;
+
 constExp
-   : exp
+   : addExp
    ;
