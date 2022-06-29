@@ -1,11 +1,12 @@
 import org.bytedeco.javacpp.LLVM;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class Scope {
-    public HashMap<String, LLVM.LLVMTypeRef> table;    //符号表
+    public HashMap<String, Type> table;    //符号表
     public List<Scope> childScopes;      //子作用域
 
     public Scope parent;     //该作用域的父级作用域

@@ -71,7 +71,10 @@ public class Visitor extends SysYParserBaseVisitor<Void> {
         curScope.put(funcName, functionType);   // 顶层作用域压入此函数
         Scope child = new Scope(curScope);      // 新建子作用域
         curScope = child;                       // 切换作用域为函数的作用域
-
+        if (ctx.funcFParams() != null) {
+            ctx.funcFParams().fillScope = true;
+            visit(ctx.funcFParams());
+        }
         curScope = curScope.parent;             // 函数的作用域构建完毕，切换回上层作用域
         return null;
     }
@@ -79,13 +82,21 @@ public class Visitor extends SysYParserBaseVisitor<Void> {
     // 访问两次，一次用来生成函数的信息压入顶级作用域，一次生成参数的信息，压入函数作用域
     @Override
     public Void visitFuncFParams(SysYParser.FuncFParamsContext ctx) {
-        PointerPointer<Pointer> pointerPointer = new PointerPointer<>();
-        count = 0;
-        ctx.funcFParam().forEach(param -> {
-            visit(param);
-            pointerPointer.put(count++, tmpTy);
-        });
-        tmpTyArr = pointerPointer;
+        if (ctx.fillScope) {
+            ctx.fillScope = false;
+            ctx.funcFParam().forEach(param -> {
+                visit(param);
+
+            });
+        } else {
+            PointerPointer<Pointer> pointerPointer = new PointerPointer<>();
+            count = 0;
+            ctx.funcFParam().forEach(param -> {
+                visit(param);
+                pointerPointer.put(count++, tmpTy);
+            });
+            tmpTyArr = pointerPointer;
+        }
         return null;
     }
 

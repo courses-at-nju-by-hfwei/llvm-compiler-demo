@@ -1001,6 +1001,7 @@ public class SysYParser extends Parser {
 	}
 
 	public static class FuncFParamsContext extends ParserRuleContext {
+		public boolean fillScope = false;
 		public List<FuncFParamContext> funcFParam() {
 			return getRuleContexts(FuncFParamContext.class);
 		}
