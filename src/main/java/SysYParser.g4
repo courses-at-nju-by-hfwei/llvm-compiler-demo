@@ -95,7 +95,7 @@ exp
    ;
 
 cond
-   : exp ((LT | GT | LE | GE) cond)*
+   : exp ((LT | GT | LE | GE) exp)*
    | cond (EQ | NEQ) cond
    | cond AND cond
    | cond OR cond
@@ -103,12 +103,6 @@ cond
 
 lVal
    : IDENT (L_BRACKT exp R_BRACKT)*
-   ;
-
-primaryExp
-   : L_PAREN exp R_PAREN
-   | lVal
-   | number
    ;
 
 number
