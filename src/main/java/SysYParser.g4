@@ -94,17 +94,6 @@ exp
    | exp (PLUS | MINUS) exp
    ;
 
-
-//exp
-//   : (L_PAREN exp R_PAREN | lVal | number | IDENT L_PAREN funcRParams? R_PAREN | unaryOp exp) exp1
-//   ;
-//
-//exp1
-//   : (MUL | DIV | MOD) exp
-//   | (PLUS | MINUS) exp
-//   |
-//   ;
-
 cond
    : exp ((LT | GT | LE | GE) cond)*
    | cond (EQ | NEQ) cond

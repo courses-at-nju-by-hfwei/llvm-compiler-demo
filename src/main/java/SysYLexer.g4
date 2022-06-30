@@ -78,13 +78,13 @@ STRING : '"'(ESC|.)*?'"';
 
 fragment
 DECIMAL_CONST   // 十进制常数：尤其注意不能为0
-   : [1-9] [0-9]*
+   : '0'
+   | [1-9] [0-9]*
    ;
 
 fragment
-OCTAL_CONST
-   : '0'
-   | ('0' [0-7]+)
+OCTAL_CONST:
+   '0' [0-7]+
    ;
 
 fragment
