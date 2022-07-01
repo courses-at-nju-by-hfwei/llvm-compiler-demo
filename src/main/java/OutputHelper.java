@@ -1,6 +1,3 @@
-import java.util.List;
-import org.antlr.v4.runtime.Token;
-
 public class OutputHelper {
 
     public static void printSemanticError(ErrorType errorType, int lineNo) {
