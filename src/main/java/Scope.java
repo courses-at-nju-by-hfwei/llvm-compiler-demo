@@ -1,6 +1,6 @@
+import main.ir.Type;
 import org.bytedeco.javacpp.LLVM;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,14 +17,23 @@ public class Scope {
         childScopes = new ArrayList<>();
     }
 
-    public LLVM.LLVMTypeRef find(String name) {     //只在同级作用域里找
+    public Type find(String name) {     // 只在当前作用域里找
         if (table.containsKey(name))
             return table.get(name);
         return null;
     }
 
-    public void put(String name, LLVM.LLVMTypeRef typeRef) {
-        this.table.put(name, typeRef);
+    public Type findWholeScope(String name){
+        if (table.containsKey(name)){
+            return table.get(name);
+        }else if (this.parent != null){
+            return parent.findWholeScope(name);
+        }
+        return null;
+    }
+
+    public void put(String name, Type type) {
+        this.table.put(name, type);
     }
 
     Scope() {
