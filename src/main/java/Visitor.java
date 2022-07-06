@@ -211,7 +211,10 @@ public class Visitor extends SysYParserBaseVisitor<Void> {
     @Override
     public Void visitBlock(SysYParser.BlockContext ctx) {
         //新一层作用域
-        curScope = new Scope(curScope);
+        Scope newScope = new Scope(curScope);
+        curScope.childScopes.add(newScope);
+        curScope = newScope;
+
         if (ctx.parent instanceof SysYParser.FuncDefContext) {
             // 将函数的参数压入当前作用域
             for (int i = 0; i < tmpNameArr.size(); i++) {

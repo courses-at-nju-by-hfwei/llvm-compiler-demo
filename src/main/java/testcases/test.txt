@@ -3,5 +3,9 @@ int b = 5;
 
 int main(){
     int a = 5;
+    c = 7;
+    a[2]=0;
+    a();
+    a(a[2]);
     return a + b;
 }
