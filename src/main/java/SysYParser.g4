@@ -96,7 +96,7 @@ exp
 
 cond
    : exp #expCond
-   | cond ((LT | GT | LE | GE) cond)+ #ltCond
+   | cond (LT | GT | LE | GE) cond #ltCond
    | cond (EQ | NEQ) cond #eqCond
    | cond AND cond #andCond
    | cond OR cond #orCond
