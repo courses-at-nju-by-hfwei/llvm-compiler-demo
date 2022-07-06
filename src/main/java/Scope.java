@@ -1,4 +1,4 @@
-import main.ir.Type;
+import ir.Type;
 import org.bytedeco.javacpp.LLVM;
 
 import java.util.ArrayList;

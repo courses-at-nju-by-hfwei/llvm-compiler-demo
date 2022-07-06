@@ -1,4 +1,4 @@
-import main.ir.*;
+import ir.*;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 import java.util.ArrayList;
