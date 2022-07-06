@@ -1,4 +1,4 @@
-import main.ir.*;
+import ir.*;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 import java.util.ArrayList;
@@ -10,8 +10,8 @@ public class Visitor extends SysYParserBaseVisitor<Void> {
 
 
     private Type tmpTy;
-    private ArrayList<Type> tmpTyArr;
-    private ArrayList<String> tmpNameArr;
+    private ArrayList<Type> tmpTyArr =  new ArrayList<>();
+    private ArrayList<String> tmpNameArr = new ArrayList<>();
     private int tmpInt;
     private boolean needInt = false;
     private Type hopeRetType;
@@ -317,7 +317,7 @@ public class Visitor extends SysYParserBaseVisitor<Void> {
             OutputHelper.printSemanticError(ErrorType.UNDEF_VAR, ctx.IDENT().getSymbol().getLine(),
                     ctx.IDENT().getText());
             return null;
-        } else if (curScope.findWholeScope(ctx.IDENT().getText()) instanceof IntType && ctx.L_BRACKT() != null) {
+        } else if (curScope.findWholeScope(ctx.IDENT().getText()) instanceof IntType && !ctx.L_BRACKT().isEmpty()) {
             OutputHelper.printSemanticError(ErrorType.NON_ARRAY, ctx.exp(0).getStart().getLine(),
                     ctx.exp(0).getText());
             return null;

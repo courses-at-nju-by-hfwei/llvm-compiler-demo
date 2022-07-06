@@ -1,4 +1,4 @@
-package main.ir;
+package ir;
 
 public class PointerType extends Type {
     private Type contained;

@@ -1,6 +1,6 @@
-import main.ir.ArrayType;
-import main.ir.IntType;
-import main.ir.Type;
+import ir.ArrayType;
+import ir.IntType;
+import ir.Type;
 
 import java.sql.Array;
 import java.util.ArrayList;

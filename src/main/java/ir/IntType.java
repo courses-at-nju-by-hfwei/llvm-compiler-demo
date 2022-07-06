@@ -1,4 +1,4 @@
-package main.ir;
+package ir;
 
 public class IntType extends Type {
     private int numBits;
