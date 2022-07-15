@@ -1,4 +1,4 @@
-// Generated from /home/xiayu/ä¸‹è½½/chromeDownLoad/compiler/LLVM COMPILER/llvm-compiler-demo/src/main/java/SysYLexer.g4 by ANTLR 4.10.1
+// Generated from C:/Users/admin/Desktop/Öú½Ì¹¤×÷/llvm-compiler-demo/src/main/java\SysYLexer.g4 by ANTLR 4.10.1
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;

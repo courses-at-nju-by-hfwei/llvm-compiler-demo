@@ -33,7 +33,7 @@ public class Visitor extends SysYParserBaseVisitor<Void> {
                         ctx.IDENT().getSymbol().getLine());
                 return null;
             }
-            scope.put(name, IntType.getI32());
+            curScope.put(name, IntType.getI32());
         } else {
             Type arrType = IntType.getI32();
             for (int i = 0; i < ctx.constExp().size(); i++) {
@@ -116,7 +116,7 @@ public class Visitor extends SysYParserBaseVisitor<Void> {
                     return null;
                 }
             }
-            scope.put(varName, IntType.getI32());
+            curScope.put(varName, IntType.getI32());
         } else {
             Type arrType = IntType.getI32();
             for (int i = 0; i < ctx.constExp().size(); i++) {
