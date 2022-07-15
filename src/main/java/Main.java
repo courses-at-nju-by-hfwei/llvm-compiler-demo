@@ -9,7 +9,7 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        if (args.length < 1){
+        if (args.length < 1) {
             System.err.println("input path is required");
         }
         String source = args[0];
@@ -20,8 +20,21 @@ public class Main {
         ParseTree tree = sysYParser.program();
         Visitor visitor = new Visitor();
         visitor.visit(tree);
-        SysYParserVisitor<Void> parserVisitor=new MyParserVisitor();
-        parserVisitor.visit(tree);
+        Integer row = Integer.parseInt(args[1]);
+        Integer column = -1;
+        String newName = "";
+        if (row != -1) {
+            column = Integer.parseInt(args[2]);
+            newName = args[3];
+            FindScopeVisitor findScope = new FindScopeVisitor(Visitor.scope, row, column);
+            findScope.visit(tree);
+            Scope targetScope = findScope.targetScope;
+            String varName = findScope.varName;
+            RenameVisitor renameVisitor=new RenameVisitor(Visitor.scope,targetScope,varName,newName);
+            renameVisitor.visit(tree);
+        }
+//        SysYParserVisitor<Void> parserVisitor = new MyParserVisitor();
+//        parserVisitor.visit(tree);
     }
 
 }
