@@ -11,7 +11,7 @@ public class MyParserVisitor extends SysYParserBaseVisitor<Void> {
     public Void visitChildren(RuleNode node) {
         printFormatTree(node.getRuleContext().depth());
         String name = SysYParser.ruleNames[node.getRuleContext().getRuleIndex()];
-        name = name.replace(name.charAt(0), (char) (name.charAt(0) + 'A' - 'a'));
+        name = name.replaceFirst(String.valueOf(name.charAt(0)), String.valueOf((char) (name.charAt(0) + 'A' - 'a')));
         System.out.println(name);
         return super.visitChildren(node);
     }
