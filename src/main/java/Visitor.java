@@ -10,7 +10,8 @@ public class Visitor extends SysYParserBaseVisitor<Void> {
 
 
     private Type tmpTy;
-    private ArrayList<Type> tmpTyArr =  new ArrayList<>();
+    private String tmpName;
+    private ArrayList<Type> tmpTyArr = new ArrayList<>();
     private ArrayList<String> tmpNameArr = new ArrayList<>();
     private int tmpInt;
     private boolean needInt = false;
@@ -185,7 +186,7 @@ public class Visitor extends SysYParserBaseVisitor<Void> {
         ctx.funcFParam().forEach(param -> {
             visit(param);
             params.add(tmpTy);
-            names.add(param.getText());
+            names.add(tmpName);
         });
         tmpTyArr = params;
         tmpNameArr = names;
@@ -205,6 +206,7 @@ public class Visitor extends SysYParserBaseVisitor<Void> {
         } else {
             tmpTy = IntType.getI32();
         }
+        tmpName = ctx.IDENT().getText();
         return null;
     }
 
