@@ -1,6 +1,5 @@
 import org.antlr.v4.runtime.tree.RuleNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
-import utils.Constants;
 
 import static utils.Constants.terminalNodeColors;
 import static utils.TreePrinter.printFormatTree;

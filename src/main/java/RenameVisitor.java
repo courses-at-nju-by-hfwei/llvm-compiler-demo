@@ -1,7 +1,7 @@
-import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.RuleContext;
+import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.RuleNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
-import org.antlr.v4.runtime.tree.TerminalNodeImpl;
 
 import java.util.Stack;
 
@@ -78,7 +78,7 @@ public class RenameVisitor extends SysYParserBaseVisitor<Void> {
         }
         //print
         RuleNode n = (RuleNode) node.getParent();
-        if (node.getSymbol().getType() > 1 && node.getSymbol().getType() <= terminalNodeColors.length && !terminalNodeColors[node.getSymbol().getType() - 1].contains("white")) {
+        if (node.getSymbol().getType() >= 1 && node.getSymbol().getType() <= terminalNodeColors.length && !terminalNodeColors[node.getSymbol().getType() - 1].contains("white")) {
             printFormatTree(n.getRuleContext().depth() + 1);
             if (!flag) {
                 System.out.println(node.getSymbol().getText() + " " + terminalNodeColors[node.getSymbol().getType() - 1]);

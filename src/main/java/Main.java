@@ -2,7 +2,6 @@ import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
-import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 import java.io.IOException;
 
@@ -30,7 +29,7 @@ public class Main {
             findScope.visit(tree);
             Scope targetScope = findScope.targetScope;
             String varName = findScope.varName;
-            RenameVisitor renameVisitor=new RenameVisitor(Visitor.scope,targetScope,varName,newName);
+            RenameVisitor renameVisitor = new RenameVisitor(Visitor.scope, targetScope, varName, newName);
             renameVisitor.visit(tree);
         }
 //        SysYParserVisitor<Void> parserVisitor = new MyParserVisitor();

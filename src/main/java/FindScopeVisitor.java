@@ -1,10 +1,8 @@
-import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.RuleContext;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-import java.util.Queue;
 import java.util.Stack;
 
 public class FindScopeVisitor extends SysYParserBaseVisitor<Void> {

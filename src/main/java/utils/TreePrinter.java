@@ -6,5 +6,4 @@ public class TreePrinter {
             System.out.print("  ");
         }
     }
-
 }

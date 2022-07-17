@@ -306,6 +306,7 @@ public class Visitor extends SysYParserBaseVisitor<Void> {
     @Override
     public Void visitNumberExp(SysYParser.NumberExpContext ctx) {
         tmpTy = IntType.getI32();
+        visit(ctx.number());
         return null;
     }
 
